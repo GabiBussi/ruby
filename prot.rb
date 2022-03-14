@@ -63,18 +63,18 @@ class Batalha
     end
     
     def recuperacao (defende, item)
-        puts "========================================"
-        if (defende.vida < 50 && item.quantidade > 0)
+        if (defende.vida < 50 && defende.vida > 0 && item.quantidade > 0)
             item.quantidade = item.quantidade - 1
             defende.vida = defende.vida + item.vida
             puts "O #{defende.nome} precisou tomar #{item.vida} de vida"
             puts "Itens restantes: #{item.quantidade}"
+            puts "O #{defende.nome} continua com a briga"
 
         else
-            puts "O #{defende.nome} continua com a briga"
+            puts "========================================"
+            morreu(defende, item)  
         end
-        puts "========================================"
-        morreu(defende, item)
+       
     end
 
     def morreu (defende, item) 
